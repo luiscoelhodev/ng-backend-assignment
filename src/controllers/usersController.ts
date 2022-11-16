@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
+import UsersService from "../providers/usersService";
 import { usersSchema, validationErrorMessage } from "../validators/usersValidator";
+const usersService = new UsersService()
 
 export default class UsersController {
     public async signup(request: Request, response: Response) {
@@ -10,6 +12,10 @@ export default class UsersController {
         } catch (error) {
             return response.status(422).send({ error: validationErrorMessage })
         }
-        return response.status(200).send({ user })
+        const userWasCreated = await usersService.create(user)
+        
+        return (userWasCreated.message) ? 
+               response.status(201).send(userWasCreated) : 
+               response.status(500).send(userWasCreated) 
     }
 }
