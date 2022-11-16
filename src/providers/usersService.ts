@@ -19,4 +19,8 @@ export default class UsersService {
             return { error: 'Error in storing user in DB.' }
         }
     }
+
+    public async findByUsername(username: string) {
+        return await prisma.user.findUnique({where: { username }})
+    }
 }

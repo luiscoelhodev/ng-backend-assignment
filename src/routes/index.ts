@@ -7,6 +7,7 @@ router.get('/hello', (_req: Request, res: Response) => {
     return res.status(200).send({ hello: 'world' })
 })
 
-router.post('/signup', usersController.signup)
+router.post('/users/signup', usersController.signup)
+router.post('/users/login', usersController.login)
 
 export { router }
