@@ -4,6 +4,7 @@ import { loginSchema, signupSchema, signupValidationErrorMessage } from "../vali
 import * as argon2 from "argon2"
 import jwt from 'jsonwebtoken'
 import 'dotenv/config'
+import { usernameError } from "../validators/transactionsValidator";
 const usersService = new UsersService()
 
 export default class UsersController {
@@ -12,14 +13,23 @@ export default class UsersController {
 
         try {
             await signupSchema.validateAsync(user, { abortEarly: false })
-        } catch (error) {
+        } catch (error: any) {
+            if (error.message.includes('^\\S{3,}$')) {
+                return response.status(422).send({ error: usernameError })
+            }
             return response.status(422).send({ error: signupValidationErrorMessage })
         }
         const userWasCreated = await usersService.create(user)
-        
-        return (userWasCreated.message) ? 
-               response.status(201).send(userWasCreated) : 
-               response.status(500).send(userWasCreated) 
+
+        if (userWasCreated.message) {
+            return response.status(201).send(userWasCreated)
+        }
+        else if (userWasCreated.error.includes('This username is already in use!')) {
+            return response.status(400).send(userWasCreated)
+        }
+        else {
+            return response.status(500).send(userWasCreated)
+        }
     }
 
     public async login(request: Request, response: Response) {

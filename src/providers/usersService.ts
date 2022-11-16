@@ -4,6 +4,9 @@ const prisma = new PrismaClient()
 
 export default class UsersService {
     public async create(user: UserDTO) {
+        const userAlreadyExists = await prisma.user.findUnique({where: { username: user.username }})
+        if (userAlreadyExists) return { error: 'This username is already in use!' }
+
         const hashPassword = await argon2.hash(user.password)
 
         try {
@@ -15,8 +18,8 @@ export default class UsersService {
                 }}
             }})
             return { message: `User '${user.username}' was created successfully!` }
-        } catch (error) {
-            return { error: 'Error in storing user in DB.' }
+        } catch (error: any) {
+            return { error, message: 'Error in storing user in DB.' }
         }
     }
 
