@@ -23,4 +23,8 @@ export default class UsersService {
     public async findByUsername(username: string) {
         return await prisma.user.findUnique({where: { username }})
     }
+
+    public async findById(id: number) {
+        return await prisma.user.findUnique({ where: { id }})
+    }
 }
