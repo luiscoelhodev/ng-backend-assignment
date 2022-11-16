@@ -9,17 +9,17 @@ const usersService = new UsersService()
 
 export default class UsersController {
     public async signup(request: Request, response: Response) {
-        const user = request.body
+        const { body } = request
 
         try {
-            await signupSchema.validateAsync(user, { abortEarly: false })
+            await signupSchema.validateAsync(body, { abortEarly: false })
         } catch (error: any) {
             if (error.message.includes('^\\S{3,}$')) {
                 return response.status(422).send({ error: usernameError })
             }
             return response.status(422).send({ error: signupValidationErrorMessage })
         }
-        const userWasCreated = await usersService.create(user)
+        const userWasCreated = await usersService.create(body)
 
         if (userWasCreated.message) {
             return response.status(201).send(userWasCreated)
