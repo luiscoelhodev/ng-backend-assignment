@@ -44,4 +44,12 @@ export default class UsersController {
         }
         return response.status(400).send({ error: 'Invalid e-mail address and/or password. '})
     }
+
+    public async getUsersBalance(request: Request, response: Response) {
+        const { accountId } = request.user
+        const balaceWasFound = await usersService.getAccountBalance(accountId)
+        return balaceWasFound.balance ? 
+            response.status(200).send(balaceWasFound) :
+            response.status(500).send(balaceWasFound) 
+    }
 }

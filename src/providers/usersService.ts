@@ -27,4 +27,13 @@ export default class UsersService {
     public async findById(id: number) {
         return await prisma.user.findUnique({ where: { id }})
     }
+
+    public async getAccountBalance(id: number) {  
+        try {
+            const { balance } = await prisma.account.findFirstOrThrow({ where: { id }})
+            return { balance }    
+        } catch (error) {
+            return { error }
+        }
+    }
 }
