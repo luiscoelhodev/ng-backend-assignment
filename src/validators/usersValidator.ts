@@ -1,7 +1,7 @@
 import Joi from 'joi'
 
 const signupSchema = Joi.object({
-    username: Joi.string().min(3).required(),
+    username: Joi.string().min(3).regex(/^\S{3,}$/).required(),
     password: Joi.string().regex(/^(?=.*[0-9])(?=.*[A-Z]).{8,}$/).required()
 })
 
