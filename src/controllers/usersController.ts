@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import UsersService from "../providers/usersService";
-import { loginSchema, signupSchema, signupValidationErrorMessage } from "../validators/usersValidator";
+import { getUsersTransactionsQuerySchema, loginSchema, signupSchema, signupValidationErrorMessage, transactionDateError, transactionTypeError } from "../validators/usersValidator";
 import * as argon2 from "argon2"
 import jwt from 'jsonwebtoken'
 import 'dotenv/config'
@@ -69,7 +69,14 @@ export default class UsersController {
         const { accountId } = request.user
 
         if (Object.keys(request.query).length !== 0) {
-            //TO DO: Validation
+            try {
+                await getUsersTransactionsQuerySchema.validateAsync(request.query, { abortEarly: false })
+            } catch (error: any) {
+                if (error.message.includes('^(in|out)$')) {
+                    return response.status(422).send({ error: transactionTypeError })
+                }
+                return response.status(422).send({ error: transactionDateError })
+            }
 
             const transactions = await transactionsService.getUsersTransactions({
                 accountId,
