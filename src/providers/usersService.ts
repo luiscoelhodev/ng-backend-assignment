@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export default class UsersService {
-    public async create(user: UserDTO) {
+    public async create(user: CreateUserDTO) {
         const userAlreadyExists = await prisma.user.findUnique({where: { username: user.username }})
         if (userAlreadyExists) return { error: 'This username is already in use!' }
 
