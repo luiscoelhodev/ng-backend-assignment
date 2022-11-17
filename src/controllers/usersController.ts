@@ -5,7 +5,9 @@ import * as argon2 from "argon2"
 import jwt from 'jsonwebtoken'
 import 'dotenv/config'
 import { usernameError } from "../validators/transactionsValidator";
+import TransactionsService from "../providers/transactionsService";
 const usersService = new UsersService()
+const transactionsService = new TransactionsService()
 
 export default class UsersController {
     public async signup(request: Request, response: Response) {
@@ -61,5 +63,26 @@ export default class UsersController {
         return balaceWasFound.balance ? 
             response.status(200).send(balaceWasFound) :
             response.status(500).send(balaceWasFound) 
+    }
+
+    public async getUsersTransactions(request: Request, response: Response) {
+        const { accountId } = request.user
+
+        if (Object.keys(request.query).length !== 0) {
+            //TO DO: Validation
+
+            const transactions = await transactionsService.getUsersTransactions({
+                accountId,
+                date: request.query.date?.toString(),
+                transactionType: request.query.transactionType?.toString()
+            })
+            return response.send({ transactions })
+        }
+        
+        const transactions = await transactionsService.getUsersTransactions({ accountId })
+
+        if (transactions.length === 0) return response.status(404).send({ message: 'No transactions found!' })
+
+        return response.send({ transactions })
     }
 }
