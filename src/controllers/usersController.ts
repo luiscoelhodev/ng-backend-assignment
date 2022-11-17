@@ -42,7 +42,7 @@ export default class UsersController {
         }
         const userExists = await usersService.findByUsername(user.username)
         if (!userExists) {
-            return response.status(400).send({ error: 'Invalid e-mail address and/or password. '})
+            return response.status(400).send({ error: 'Invalid username and/or password. '})
         }
 
         const {password, ...rest} = userExists
@@ -52,7 +52,7 @@ export default class UsersController {
             const token = jwt.sign({id: userExists.id}, process.env.JWT_SECRET || '', {expiresIn: '24h'})
             return response.status(200).send({ user: rest, token })
         }
-        return response.status(400).send({ error: 'Invalid e-mail address and/or password. '})
+        return response.status(400).send({ error: 'Invalid username and/or password. '})
     }
 
     public async getUsersBalance(request: Request, response: Response) {
