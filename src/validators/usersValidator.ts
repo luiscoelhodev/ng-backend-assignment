@@ -1,4 +1,4 @@
-import Joi, { string } from 'joi'
+import Joi from 'joi'
 
 const signupSchema = Joi.object({
     username: Joi.string().min(3).regex(/^\S{3,}$/).required(),
