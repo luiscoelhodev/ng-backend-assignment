@@ -1,4 +1,4 @@
-interface UserDTO {
+interface CreateUserDTO {
     username: string
     password: string
 }
