@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "build": "etsc",
+    "start": "node index.js"
   },
   "author": "Luis Coelho",
   "license": "ISC",
@@ -22,6 +24,7 @@
     "@prisma/client": "^4.6.1",
     "argon2": "^0.30.2",
     "dotenv": "^16.0.3",
+    "esbuild-node-tsc": "^2.0.4",
     "express": "^4.18.2",
     "joi": "^17.7.0",
     "jsonwebtoken": "^8.5.1"
