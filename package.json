@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch src/index.ts",
     "build": "etsc",
-    "start": "node index.js"
+    "dev": "tsx watch src/index.ts",
+    "start": "npx prisma migrate dev && node ./dist/index.js"
   },
   "author": "Luis Coelho",
   "license": "ISC",
