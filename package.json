@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "etsc",
     "dev": "tsx watch src/index.ts",
-    "start": "npx prisma migrate dev && node ./dist/index.js"
+    "start": "node ./dist/index.js",
+    "start:docker": "npx prisma migrate dev && node ./dist/index.js"
   },
   "author": "Luis Coelho",
   "license": "ISC",
