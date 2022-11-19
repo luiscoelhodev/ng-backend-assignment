@@ -83,6 +83,7 @@ export default class UsersController {
                 date: request.query.date?.toString(),
                 transactionType: request.query.transactionType?.toString()
             })
+            if (transactions.length === 0) return response.status(404).send({ message: 'No transactions found!' })
             return response.send({ transactions })
         }
         
