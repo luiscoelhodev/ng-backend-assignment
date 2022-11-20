@@ -13,8 +13,6 @@ This API project was developed after a challenge proposed by NG.CASH for the pos
 [4. Technologies](#technologies)   
 [5. License](#license)   
 
----
-
 ## Getting Started
 
 The following instructions will help you get a copy of this project up and running on your local machine. You will be able to test it as Production/Staging or Development mode.
@@ -27,8 +25,6 @@ You need to have Docker (for ```docker-compose```) installed on your machine in 
 
 - https://nodejs.org/en/download/
 - https://www.docker.com/products/docker-desktop/
-
----
 
 ## Download and Installation
 
@@ -66,7 +62,6 @@ With this optional you won't be using Docker, so you have to make sure PostgreSQ
 4. ```npm run dev``` will start up the application, running on port 3000. This script runs the *'index.ts'* file and watches all changes in the code.
 
 5. If you want to build the project, run ```npm run build```, which will create the *'./dist'* folder and run ```npm run start``` to run the built project with the *'index.js'* file.
----
 
 ## API Resources  
 There's a filled called *'ng-assignment-insomnia-collection.json'* in *'./assets'* that can be imported into Insomnia (https://insomnia.rest/download), a famous open-source API client, which contains a collection of all of this project's endpoints. You can take advantage of this tool and save time send your requests.  
@@ -82,7 +77,7 @@ There's a filled called *'ng-assignment-insomnia-collection.json'* in *'./assets
 
 3. Transactions
 - POST /send-money
----
+
 ## Technologies  
 Main technologies in this project:
 - [Node.js](https://nodejs.org/en/) - *A JavaScript runtime built on Chrome's V8 JavaScript engine.*
