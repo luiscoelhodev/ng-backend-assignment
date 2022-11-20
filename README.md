@@ -64,7 +64,7 @@ With this optional you won't be using Docker, so you have to make sure PostgreSQ
 5. If you want to build the project, run ```npm run build```, which will create the *'./dist'* folder and run ```npm run start``` to run the built project with the *'index.js'* file.
 
 ## API Resources  
-There's a filled called *'ng-assignment-insomnia-collection.json'* in *'./assets'* that can be imported into Insomnia (https://insomnia.rest/download), a famous open-source API client, which contains a collection of all of this project's endpoints. You can take advantage of this tool and save time send your requests.  
+The file *'./assets/ng-assignment-insomnia-collection.json'* can be imported into Insomnia (https://insomnia.rest/download), a famous open-source API client, which contains a collection of all of this project's endpoints. You can take advantage of this tool and save time send your requests.  
 ### Endpoints:
 
 1. Auth
