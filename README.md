@@ -3,15 +3,15 @@
 This API project was developed after a challenge proposed by NG.CASH for the position of junior back-end developer. This challenge is about creating a dockerized application that enables NG users to send each other internal transfers.
 
 ## Content
-1. [Getting Started](#getting-started)  
-    1.1 [Requirements](#requirements)
-2. [Download and Installation](#download-and-installation)  
-    2.1 [Option 1: Running the project in Production/Staging mode](#option-1-running-the-project-in-productionstaging-mode) 
-    2.2 [Option 2: Running the project in development mode](#option-2-running-the-project-in-development-mode)
-3. [API Resources](#api-resources)  
-    3.1 [Endpoints](#endpoints)
-4. [Technologies](#technologies)
-5. [License](#license)
+[1. Getting Started](#getting-started)  
+    [1.1 Requirements](#requirements)
+[2. Download and Installation](#download-and-installation)  
+    [2.1 Option 1: Running the project in Production/Staging mode](#option-1-running-the-project-in-productionstaging-mode)  
+    [2.2 Option 2: Running the project in development mode](#option-2-running-the-project-in-development-mode)
+[3. API Resources](#api-resources)   
+    [3.1 Endpoints](#endpoints)   
+[4. Technologies](#technologies)   
+[5. License](#license)   
 
 ---
 
